@@ -6,7 +6,7 @@ const Loading = () => {
       <i
         className="pi pi-car"
         style={{
-          fontSize: "5rem",
+          fontSize: "4rem",
           zIndex: 10,
           position: "absolute",
           //   width: "100px",

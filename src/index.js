@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "../src/css/index.css";
 
-import reportWebVitals from "./reportWebVitals";
 import "primeicons/primeicons.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/navBar";
@@ -23,7 +22,6 @@ root.render(
     <PrimeReactProvider>
       <BrowserRouter>
         <Routes>
-          {/* <Route path="/login" element={<Login />} /> */}
           {/* <Route
             path="/forget-password"
             element={<ForgetPassword useThemeStore={useThemeStore} />}
@@ -40,11 +38,6 @@ root.render(
         </Routes>
       </BrowserRouter>
     </PrimeReactProvider>
-    {/* <App /> */}
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
