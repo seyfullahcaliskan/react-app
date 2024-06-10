@@ -18,6 +18,10 @@ export default function AdminLayout(
     return window.location.pathname !== "/full-screen-maps";
   };
 
+  var currentPath = window.location.pathname;
+  var path = currentPath.substr(currentPath.lastIndexOf("/") + 1);
+
+  console.log("Son segment: " + path);
   useEffect(() => {
     //getRoutes();
   }, []);
