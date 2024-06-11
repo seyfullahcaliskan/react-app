@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 
 const Loading = () => {
-  useEffect(() => {
-    console.log(localStorage);
-  }, []);
+  useEffect(() => {}, []);
   return (
     <div className="flex justify-center items-center relative w-full h-full">
       <i
