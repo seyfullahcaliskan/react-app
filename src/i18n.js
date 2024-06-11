@@ -46,8 +46,8 @@ i18n.use(initReactI18next).init({
       },
     },
   },
-  lng: localStorage.language,
-  fallbackLng: localStorage.language,
+  lng: localStorage.language || 'tr',
+  fallbackLng: localStorage.language || 'tr',
   interpolation: {
     escapeValue: false,
   },

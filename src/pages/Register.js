@@ -1,24 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { InputText } from "primereact/inputtext";
-import { Button } from "primereact/button";
-import { FloatLabel } from "primereact/floatlabel";
-import { useTranslation } from "react-i18next";
+import React, { useEffect, useState } from 'react';
+import { InputText } from 'primereact/inputtext';
+import { Button } from 'primereact/button';
+import { FloatLabel } from 'primereact/floatlabel';
+import { useTranslation } from 'react-i18next';
 
 const Register = () => {
   const [value, setValue] = useState();
   const { t } = useTranslation();
 
-  const handleRegister = () => {
-    // Giriş işlemleri burada yapılabilir
-  };
+  const handleRegister = () => {};
   useEffect(() => {}, []);
 
   return (
     <div
       className="bg-gradient-to-bl from-red-100 via-red-500 to-red-900 
                  dark:bg-gradient-to-bl dark:from-gray-100 dark:via-gray-500 dark:to-gray-900
-                absolute left-0 top-0 z-0 w-full  h-full  bg-cover bg-center"
-    >
+                absolute left-0 top-0 z-0 w-full  h-full  bg-cover bg-center">
       {/* <img
         className="absolute left-0 top-0 z-0 w-full h-full bg-cover bg-center"
         width="100%"
@@ -33,8 +30,7 @@ const Register = () => {
        lg:top-[10%] lg:left-[10%] lg:w-[50%]
        xl:top-[10%] xl:left-[10%] xl:w-[50%]
        top-[10%] left-[10%] w-[50%]
-      text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-10xl"
-      >
+      text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-10xl">
         {/* <div class=" bg-red-200 xs:bg-green-500 sm:bg-blue-500 md:bg-yellow-500
      lg:bg-purple-500 xl:bg-pink-500">
       DENEME
@@ -48,8 +44,7 @@ const Register = () => {
       md:w-[40%] md:top-[15%] md:left-[30%]
       sm:w-[50%] sm:top-[15%] sm:left-[25%]
       xs:w-[100%] xs:top-[15%] xs:left-[0%]
-      w-[70%] top-[15%] left-[15%]"
-      >
+      w-[70%] top-[15%] left-[15%]">
         <div className="flex justify-center h-24 xs:h-10">
           {/* <img  
         src="https://static.vecteezy.com/ti/gratis-vector/p3/4688271-sc-logo-letter-ontwerp-pictogram-sc-letters-met-kleurrijke-creatieve-swoosh-lijnen-vector.jpg"
@@ -58,21 +53,19 @@ const Register = () => {
           <p
             className="bg-gradient-to-bl from-red-100 via-red-500 to-red-900
                        dark:bg-gradient-to-bl dark:from-gray-100 dark:via-gray-500 dark:to-gray-900
-                       bg-clip-text text-transparent text-4xl font-bold text-center mt-10"
-          >
+                       bg-clip-text text-transparent text-4xl font-bold text-center mt-10">
             LOGO
           </p>
         </div>
         <div className="flex flex-col">
           <div className="text-center flex flex-col items-center gap-y-4 py-4">
             <h1 className="font-firaSans font-bold text-3xl">
-              {t("createAcc")}
+              {t('createAcc')}
             </h1>
             <a
               className=" text-center text-secondary font-semibold
-            hover:underline hover:text-primary-dark text-base"
-            >
-              {t("haveAccount")}
+            hover:underline hover:text-primary-dark text-base">
+              {t('haveAccount')}
             </a>
           </div>
           <div className="mb-5 flex flex-col gap-y-8 w-full justify-center p-10 pt-4">
@@ -83,8 +76,10 @@ const Register = () => {
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
               />
-              <label className="ml-5 font-semibold" htmlFor="username">
-                {t("username")}
+              <label
+                className="ml-5 font-semibold"
+                htmlFor="username">
+                {t('username')}
               </label>
             </FloatLabel>
             <FloatLabel className="flex">
@@ -95,8 +90,10 @@ const Register = () => {
                 onChange={(e) => setValue(e.target.value)}
                 type="password"
               />
-              <label className="ml-5 font-semibold" htmlFor="password">
-                {t("password")}
+              <label
+                className="ml-5 font-semibold"
+                htmlFor="password">
+                {t('password')}
               </label>
             </FloatLabel>
             <FloatLabel className="flex">
@@ -106,8 +103,10 @@ const Register = () => {
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
               />
-              <label className="ml-5 font-semibold" htmlFor="mail">
-                {t("mail")}
+              <label
+                className="ml-5 font-semibold"
+                htmlFor="mail">
+                {t('mail')}
               </label>
             </FloatLabel>
             <FloatLabel className="flex">
@@ -117,20 +116,22 @@ const Register = () => {
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
               />
-              <label className="ml-5 font-semibold" htmlFor="phone">
-                {t("phone")}
+              <label
+                className="ml-5 font-semibold"
+                htmlFor="phone">
+                {t('phone')}
               </label>
             </FloatLabel>
             <Button
               className=" bg-red-500 hover:bg-red-600 dark:bg-gray-500 dark:hover:bg-gray-600 py-5 text-white font-medium w-[full] h-15  rounded-lg shadow-lg shadow-gray"
-              label={t("signup")}
+              label={t('signup')}
               onClick={handleRegister}
             />
           </div>
         </div>
       </div>
       <div className="left-0 bottom-0 fixed w-[100%] h-[60px] z-10 flex bg-gradient-to-rt from-red-100 via-red-500 to-red-900 text-white flex justify-between items-center shadow-lg">
-        <div className="ml-10 font-bold">2024</div>{" "}
+        <div className="ml-10 font-bold">2024</div>
         <div className="mr-10 font-bold">Seyfullah Çalışkan </div>
       </div>
     </div>
