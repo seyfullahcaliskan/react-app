@@ -16,14 +16,10 @@ import ForgetPassword from "./pages/ForgetPassword";
 import NewPassword from "./pages/NewPassword";
 export default function App() {
   useEffect(() => {
-    console.log(localStorage);
     const currentTheme = localStorage.getItem("theme");
     if (currentTheme) {
       document.documentElement.classList.add(currentTheme);
     }
-    var currentPath = window.location.pathname;
-    var path = currentPath.substr(currentPath.lastIndexOf("/") + 1);
-    console.log(path);
   }, []);
 
   return (
