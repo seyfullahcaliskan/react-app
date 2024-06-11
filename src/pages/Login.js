@@ -2,12 +2,22 @@ import React, { useEffect, useState } from "react";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { FloatLabel } from "primereact/floatlabel";
+import { useTranslation } from "react-i18next";
+import i18n from "../i18n";
 
 const Login = () => {
+  const { t } = useTranslation();
+  const currentLanguage = i18n.language;
+  console.log(currentLanguage);
+
   const [value, setValue] = useState();
-  const [translate, setTranslate] = useState("TR");
 
   useEffect(() => {}, []);
+
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+    localStorage.setItem("language", language);
+  };
 
   function toggleTheme() {
     const isDarkModeEnabled =
@@ -33,9 +43,6 @@ const Login = () => {
         src="https://www.chromethemer.com/wallpapers/chromebook-wallpapers/images/960/warped-space-chromebook-wallpaper.jpg"
         alt=""
       /> */}
-      <p class="text-gray-900 dark:text-white">
-        Bu metin karanlık modda beyaz olacak.
-      </p>
       <div
         className="font-bold leading-tight font-firaSans text-white absolute
                    text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-10xl
@@ -48,7 +55,7 @@ const Login = () => {
         {/* <div class=" bg-red-200 xs:bg-green-500 sm:bg-blue-500 md:bg-yellow-500 lg:bg-purple-500 xl:bg-pink-500">
       DENEME
       </div>    */}
-        ...Hoş Geldiniz
+        ...{t("welcome")}
       </div>
       <div
         className="absolute bg-white z-0 rounded-3xl p-2 shadow-2xl shadow-black h-fit
@@ -74,10 +81,8 @@ const Login = () => {
         </div>
         <div className="flex flex-col">
           <div className="text-center flex flex-col items-center gap-y-4 py-5">
-            <h1 className="font-firaSans font-bold text-3xl">Giriş Yap</h1>
-            <p className="text-sm">
-              Kullanıcı adı ve parolanızla giriş yapabilirsiniz
-            </p>
+            <h1 className="font-firaSans font-bold text-3xl">{t("login")}</h1>
+            <p className="text-sm">{t("youcanlogin")}</p>
           </div>
           <div className="mb-5 flex flex-col gap-y-8 w-full justify-center p-10 pt-4">
             <FloatLabel className="flex">
@@ -88,7 +93,7 @@ const Login = () => {
                 onChange={(e) => setValue(e.target.value)}
               />
               <label className="ml-5 font-semibold" htmlFor="username">
-                Kullanıcı Adı
+                {t("username")}
               </label>
             </FloatLabel>
             <FloatLabel className="flex">
@@ -100,12 +105,12 @@ const Login = () => {
                 type="password"
               />
               <label className="ml-5 font-semibold" htmlFor="password">
-                Şifre
+                {t("password")}
               </label>
             </FloatLabel>
             <Button
               className=" bg-red-500 hover:bg-red-600 dark:bg-gray-500 dark:hover:bg-gray-600 py-5 text-white font-medium w-[full] h-15  rounded-lg shadow-lg shadow-gray"
-              label="Giriş Yap"
+              label={t("login")}
               onClick={() => handleLogin}
             />
             <a
@@ -113,13 +118,13 @@ const Login = () => {
               className=" text-center text-secondary font-semibold
             hover:underline hover:text-primary-dark text-base "
             >
-              Şifrenizi mi unuttunuz ?
+              {t("forgetPassword")}
             </a>
             <div className="flex justify-between">
               <Button
                 icon="pi pi-user-plus"
                 className="bg-red-600  hover:bg-red-700 dark:bg-gray-600 dark:hover:bg-gray-700 py-5 text-white font-medium w-[25%] h-10 rounded-lg shadow-lg shadow-gray"
-                //onClick={handleLogin}
+                onClick={handleLogin}
               />
               {localStorage.theme === "dark" ? (
                 <Button
@@ -134,26 +139,29 @@ const Login = () => {
                   onClick={() => toggleTheme()}
                 />
               )}
-              {translate === "TR" ? (
+              {currentLanguage === "tr" ? (
                 <Button
                   label="EN"
                   className="bg-red-600  hover:bg-red-700 dark:bg-gray-600 dark:hover:bg-gray-700 py-5 text-white font-medium w-[25%] h-10 rounded-lg shadow-lg shadow-gray"
-                  onClick={() => setTranslate("EN")}
+                  onClick={() => changeLanguage("en")}
                 />
               ) : (
                 <Button
                   label="TR"
                   className="bg-red-600  hover:bg-red-700 dark:bg-gray-600 dark:hover:bg-gray-700 py-5 text-white font-medium w-[25%] h-10 rounded-lg shadow-lg shadow-gray"
-                  onClick={() => setTranslate("TR")}
+                  onClick={() => changeLanguage("tr")}
                 />
               )}
             </div>
           </div>
         </div>
       </div>
-      <div className="left-0 bottom-0 fixed w-[100%] h-[60px] z-10 flex bg-gradient-to-rt from-red-100 via-red-500 to-red-900 text-white flex justify-between items-center shadow-lg">
-        <div className="ml-10 font-bold">2024</div>{" "}
-        <div className="mr-10 font-bold">Seyfullah Çalışkan </div>
+      <div className="left-0 bottom-0 fixed w-[100%] h-[60px] z-10 bg-gradient-to-rt from-red-100 via-red-500 to-red-900 text-white flex justify-between items-center shadow-lg">
+        <div className="ml-10 font-bold">2024</div>
+        <div className="mr-10 font-bold">
+          Seyfullah Çalışkan
+          <p>{t("seyfo")}</p>
+        </div>
       </div>
     </div>
   );

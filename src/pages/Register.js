@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { FloatLabel } from "primereact/floatlabel";
+import { useTranslation } from "react-i18next";
 
 const Register = () => {
   const [value, setValue] = useState();
-  const handleLogin = () => {
+  const { t } = useTranslation();
+
+  const handleRegister = () => {
     // Giriş işlemleri burada yapılabilir
   };
   useEffect(() => {}, []);
@@ -62,12 +65,14 @@ const Register = () => {
         </div>
         <div className="flex flex-col">
           <div className="text-center flex flex-col items-center gap-y-4 py-4">
-            <h1 className="font-firaSans font-bold text-3xl">Hesap Oluştur</h1>
+            <h1 className="font-firaSans font-bold text-3xl">
+              {t("createAcc")}
+            </h1>
             <a
               className=" text-center text-secondary font-semibold
             hover:underline hover:text-primary-dark text-base"
             >
-              Hesabınız varsa tıklayarak giriş yapabilirsiniz...
+              {t("haveAccount")}
             </a>
           </div>
           <div className="mb-5 flex flex-col gap-y-8 w-full justify-center p-10 pt-4">
@@ -79,7 +84,7 @@ const Register = () => {
                 onChange={(e) => setValue(e.target.value)}
               />
               <label className="ml-5 font-semibold" htmlFor="username">
-                Kullanıcı Adı
+                {t("username")}
               </label>
             </FloatLabel>
             <FloatLabel className="flex">
@@ -91,7 +96,7 @@ const Register = () => {
                 type="password"
               />
               <label className="ml-5 font-semibold" htmlFor="password">
-                Şifre
+                {t("password")}
               </label>
             </FloatLabel>
             <FloatLabel className="flex">
@@ -102,7 +107,7 @@ const Register = () => {
                 onChange={(e) => setValue(e.target.value)}
               />
               <label className="ml-5 font-semibold" htmlFor="mail">
-                Mail
+                {t("mail")}
               </label>
             </FloatLabel>
             <FloatLabel className="flex">
@@ -113,13 +118,13 @@ const Register = () => {
                 onChange={(e) => setValue(e.target.value)}
               />
               <label className="ml-5 font-semibold" htmlFor="phone">
-                Telefon Numarası
+                {t("phone")}
               </label>
             </FloatLabel>
             <Button
               className=" bg-red-500 hover:bg-red-600 dark:bg-gray-500 dark:hover:bg-gray-600 py-5 text-white font-medium w-[full] h-15  rounded-lg shadow-lg shadow-gray"
-              label="Kaydol"
-              onClick={handleLogin}
+              label={t("signup")}
+              onClick={handleRegister}
             />
           </div>
         </div>

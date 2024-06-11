@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { FloatLabel } from "primereact/floatlabel";
+import { useTranslation } from "react-i18next";
 
 const ForgetPassword = () => {
   const [value, setValue] = useState();
+  const { t } = useTranslation();
 
   useEffect(() => {}, []);
 
-  const handleLogin = () => {
+  const sendPasswordMail = () => {
     // Giriş işlemleri burada yapılabilir
   };
 
@@ -64,12 +66,14 @@ const ForgetPassword = () => {
         </div>
         <div className="flex flex-col">
           <div className="text-center flex flex-col items-center gap-y-4 py-4">
-            <h1 className="font-firaSans font-bold text-3xl">Şifremi yenile</h1>
+            <h1 className="font-firaSans font-bold text-3xl">
+              {t("renewPassword")}
+            </h1>
             <p
               className=" text-center text-secondary font-semibold
             hover:underline hover:text-primary-dark text-base"
             >
-              Mail adresinize şifre yenileme bağlantısı alabilirsiniz
+              {t("takeRenewalLink")}
             </p>
           </div>
           <div className="mb-5 flex flex-col gap-y-8 w-full justify-center p-10 pt-4">
@@ -81,14 +85,14 @@ const ForgetPassword = () => {
                 onChange={(e) => setValue(e.target.value)}
               />
               <label className="ml-5 font-semibold" htmlFor="mail">
-                Mail Adresi
+                {t("mail")}
               </label>
             </FloatLabel>
 
             <Button
               className=" bg-red-500 hover:bg-red-600 dark:bg-gray-500 dark:hover:bg-gray-600 py-5 text-white font-medium w-[full] h-15  rounded-lg shadow-lg shadow-gray"
-              label="Yenileme Bağlantısı Gönder"
-              onClick={handleLogin}
+              label={t("sendRenewalLink")}
+              onClick={sendPasswordMail}
             />
           </div>
         </div>

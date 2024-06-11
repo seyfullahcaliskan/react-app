@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { FloatLabel } from "primereact/floatlabel";
+import { useTranslation } from "react-i18next";
 
 const NewPassword = () => {
   const [value, setValue] = useState();
-  const handleLogin = () => {
+  const { t } = useTranslation();
+
+  const handleChangePassword = () => {
     // Giriş işlemleri burada yapılabilir
   };
   useEffect(() => {}, []);
@@ -61,12 +64,14 @@ const NewPassword = () => {
         </div>
         <div className="flex flex-col">
           <div className="text-center flex flex-col items-center gap-y-4 py-4">
-            <h1 className="font-firaSans font-bold text-3xl">Şifremi yenile</h1>
+            <h1 className="font-firaSans font-bold text-3xl">
+              {t("renewPassword")}
+            </h1>
             <p
               className=" text-center text-secondary font-semibold
             hover:underline hover:text-primary-dark text-base"
             >
-              Yeni şifrenizi giriniz
+              {t("enterNewPassword")}
             </p>
           </div>
           <div className="mb-5 flex flex-col gap-y-8 w-full justify-center p-10 pt-4">
@@ -79,14 +84,14 @@ const NewPassword = () => {
                 type="password"
               />
               <label className="ml-5 font-semibold" htmlFor="newPassword">
-                Yeni Şifre
+                {t("newPassword")}
               </label>
             </FloatLabel>
 
             <Button
               className=" bg-red-500 hover:bg-red-600 dark:bg-gray-500 dark:hover:bg-gray-600 py-5 text-white font-medium w-[full] h-15  rounded-lg shadow-lg shadow-gray"
-              label="Yenileme Bağlantısı Gönder"
-              onClick={handleLogin}
+              label={t("renewPassword")}
+              onClick={handleChangePassword}
             />
           </div>
         </div>

@@ -1,17 +1,12 @@
 import { Button } from "primereact/button";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function HomePage() {
+  const { t } = useTranslation();
+
   useEffect(() => {}, []);
-  if (
-    localStorage.theme === "dark" ||
-    (!("theme" in localStorage) &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches)
-  ) {
-    document.documentElement.classList.add("dark");
-  } else {
-    document.documentElement.classList.remove("dark");
-  }
+
   function toggleTheme() {
     const isDarkModeEnabled =
       document.documentElement.classList.contains("dark");

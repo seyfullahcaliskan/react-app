@@ -14,7 +14,15 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgetPassword from "./pages/ForgetPassword";
 import NewPassword from "./pages/NewPassword";
+
+import i18n from "./i18n";
+
 export default function App() {
+  document.addEventListener("DOMContentLoaded", () => {
+    const savedLanguage = localStorage.getItem("language");
+    const language = savedLanguage || "tr";
+    i18n.changeLanguage(language);
+  });
   useEffect(() => {
     const currentTheme = localStorage.getItem("theme");
     if (currentTheme) {
