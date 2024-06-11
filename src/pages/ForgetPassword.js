@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { FloatLabel } from "primereact/floatlabel";
@@ -9,8 +9,20 @@ const ForgetPassword = () => {
     // Giriş işlemleri burada yapılabilir
   };
 
+  useEffect(() => {
+    console.log(localStorage);
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.classList.add(currentTheme);
+    }
+  }, []);
+
   return (
-    <div className="bg-gradient-to-bl from-red-100 via-red-500 to-red-900 absolute left-0 top-0 z-0 w-full  h-full  bg-cover bg-center">
+    <div
+      className="bg-gradient-to-bl from-red-100 via-red-500 to-red-900
+                 dark:bg-gradient-to-bl dark:from-gray-100 dark:via-gray-500 dark:to-gray-900
+                 absolute left-0 top-0 z-0 w-full  h-full  bg-cover bg-center"
+    >
       {/* <img
         className="absolute left-0 top-0 z-0 w-full h-full bg-cover bg-center"
         width="100%"
@@ -31,23 +43,27 @@ const ForgetPassword = () => {
      lg:bg-purple-500 xl:bg-pink-500">
       DENEME
       </div>     */}
-        ...Şifremi unuttum
+        {/* ...Şifremi unuttum */}
       </div>
       <div
         className="absolute bg-white z-0 rounded-3xl p-2 shadow-2xl shadow-black h-fit
-      xl:w-[30%] xl:top-[20%] xl:left-[35%]
-      lg:w-[40%] lg:top-[20%] lg:left-[30%]
-      md:w-[40%] md:top-[20%] md:left-[30%]
-      sm:w-[50%] sm:top-[20%] sm:left-[25%]
-      xs:w-[100%] xs:top-[20%] xs:left-[0%]
-      w-[70%] top-[18%] left-[15%]"
+                   xl:w-[30%] xl:top-[25%] xl:left-[35%]
+                   lg:w-[40%] lg:top-[25%] lg:left-[30%]
+                   md:w-[40%] md:top-[25%] md:left-[30%]
+                   sm:w-[50%] sm:top-[25%] sm:left-[25%]
+                   xs:w-[100%] xs:top-[25%] xs:left-[0%]
+                      w-[70%] top-[25%] left-[15%]"
       >
         <div className="flex justify-center h-24 xs:h-10">
           {/* <img  
         src="https://static.vecteezy.com/ti/gratis-vector/p3/4688271-sc-logo-letter-ontwerp-pictogram-sc-letters-met-kleurrijke-creatieve-swoosh-lijnen-vector.jpg"
         alt="" */}
           {/* /> */}
-          <p className="bg-gradient-to-bl from-red-100 via-red-500 to-red-900 bg-clip-text text-transparent text-4xl font-bold text-center mt-10">
+          <p
+            className="bg-gradient-to-bl from-red-100 via-red-500 to-red-900 
+                        dark:bg-gradient-to-bl dark:from-gray-100 dark:via-gray-500 dark:to-gray-900
+                        bg-clip-text text-transparent text-4xl font-bold text-center mt-10"
+          >
             LOGO
           </p>
         </div>
@@ -64,7 +80,7 @@ const ForgetPassword = () => {
           <div className="mb-5 flex flex-col gap-y-8 w-full justify-center p-10 pt-4">
             <FloatLabel className="flex">
               <InputText
-                className="h-14 border-red-500 rounded-5 border w-full rounded-lg shadow-lg shadow-gray"
+                className="h-14 border-red-500 dark:border-gray-500 rounded-5 border w-full rounded-lg shadow-lg shadow-gray"
                 id="mail"
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
@@ -75,7 +91,7 @@ const ForgetPassword = () => {
             </FloatLabel>
 
             <Button
-              className=" bg-red-500 py-5 text-white font-medium w-[full] h-15 hover:bg-red-600 rounded-lg shadow-lg shadow-gray"
+              className=" bg-red-500 hover:bg-red-600 dark:bg-gray-500 dark:hover:bg-gray-600 py-5 text-white font-medium w-[full] h-15  rounded-lg shadow-lg shadow-gray"
               label="Yenileme Bağlantısı Gönder"
               onClick={handleLogin}
             />
@@ -83,7 +99,7 @@ const ForgetPassword = () => {
         </div>
       </div>
       <div className="left-0 bottom-0 fixed w-[100%] h-[60px] z-10 flex bg-gradient-to-rt from-red-100 via-red-500 to-red-900 text-white flex justify-between items-center shadow-lg">
-        <div className="ml-10 font-bold">2024</div>{" "}
+        <div className="ml-10 font-bold">2024</div>
         <div className="mr-10 font-bold">Seyfullah Çalışkan </div>
       </div>
     </div>

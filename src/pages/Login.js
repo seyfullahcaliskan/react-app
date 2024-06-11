@@ -1,34 +1,65 @@
-import React, { useState } from 'react';
-import { InputText } from 'primereact/inputtext';
-import { Button } from 'primereact/button';
-import { FloatLabel } from 'primereact/floatlabel';
+import React, { useEffect, useState } from "react";
+import { InputText } from "primereact/inputtext";
+import { Button } from "primereact/button";
+import { FloatLabel } from "primereact/floatlabel";
 
 const Login = () => {
   const [value, setValue] = useState();
-  const [darkMode, setDarkMode] = useState(false);
-  const [translate, setTranslate] = useState('TR');
+  const [translate, setTranslate] = useState("TR");
 
+  useEffect(() => {
+    console.log(localStorage);
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.classList.add(currentTheme);
+    }
+  }, []);
+
+  function toggleTheme() {
+    const isDarkModeEnabled =
+      document.documentElement.classList.contains("dark");
+    const newTheme = isDarkModeEnabled ? "light" : "dark";
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.classList.toggle("dark", !isDarkModeEnabled);
+    console.log(localStorage);
+  }
+  // if (
+  //   localStorage.theme === "dark" ||
+  //   (!("theme" in localStorage) &&
+  //     window.matchMedia("(prefers-color-scheme: dark)").matches)
+  // ) {
+  //   document.documentElement.classList.add("dark");
+  // } else {
+  //   document.documentElement.classList.remove("dark");
+  // }
   const handleLogin = () => {
     // Giriş işlemleri burada yapılabilir
   };
 
   return (
-    <div className="bg-gradient-to-bl from-red-100 via-red-500 to-red-900 absolute left-0 top-0 z-0 w-full  h-full  bg-cover bg-center">
+    <div
+      className="bg-gradient-to-bl from-red-100 via-red-500 to-red-900
+                 dark:bg-gradient-to-bl dark:from-gray-100 dark:via-gray-500 dark:to-gray-900
+                 absolute left-0 top-0 z-0 w-full  h-full  bg-cover bg-center"
+    >
       {/* <img
         className="absolute left-0 top-0 z-0 w-full h-full bg-cover bg-center"
         width="100%"
         src="https://www.chromethemer.com/wallpapers/chromebook-wallpapers/images/960/warped-space-chromebook-wallpaper.jpg"
         alt=""
       /> */}
-
+      <p class="text-gray-900 dark:text-white">
+        Bu metin karanlık modda beyaz olacak.
+      </p>
       <div
         className="font-bold leading-tight font-firaSans text-white absolute
-       sm:top-[10%] sm:left-[10%] sm:w-[50%]
-       md:top-[10%] md:left-[10%] md:w-[50%]
-       lg:top-[10%] lg:left-[10%] lg:w-[50%]
-       xl:top-[10%] xl:left-[10%] xl:w-[50%]
-       top-[10%] left-[10%] w-[50%]
-      text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-10xl">
+                   text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-10xl
+                   sm:top-[10%] sm:left-[10%] sm:w-[50%]
+                   md:top-[10%] md:left-[10%] md:w-[50%]
+                   lg:top-[10%] lg:left-[10%] lg:w-[50%]
+                   xl:top-[10%] xl:left-[10%] xl:w-[50%]
+                      top-[10%] left-[10%] w-[50%]"
+      >
         {/* <div class=" bg-red-200 xs:bg-green-500 sm:bg-blue-500 md:bg-yellow-500 lg:bg-purple-500 xl:bg-pink-500">
       DENEME
       </div>    */}
@@ -36,18 +67,23 @@ const Login = () => {
       </div>
       <div
         className="absolute bg-white z-0 rounded-3xl p-2 shadow-2xl shadow-black h-fit
-      xl:w-[25%] xl:top-[20%] xl:left-[65%]
-      lg:w-[40%] lg:top-[20%] lg:left-[50%]
-      md:w-[50%] md:top-[20%] md:left-[40%]
-      sm:w-[60%] sm:top-[20%] sm:left-[20%]
-      xs:w-[100%] xs:top-[20%] xs:left-[0%]
-      w-[70%] top-[18%] left-[15%]">
+      xl:w-[25%] xl:top-[16%] xl:left-[65%]
+      lg:w-[40%] lg:top-[16%] lg:left-[50%]
+      md:w-[50%] md:top-[16%] md:left-[40%]
+      sm:w-[60%] sm:top-[16%] sm:left-[20%]
+      xs:w-[100%] xs:top-[16%] xs:left-[0%]
+      w-[70%] top-[16%] left-[15%]"
+      >
         <div className="flex justify-center h-24 xs:h-10">
           {/* <img  
         src="https://static.vecteezy.com/ti/gratis-vector/p3/4688271-sc-logo-letter-ontwerp-pictogram-sc-letters-met-kleurrijke-creatieve-swoosh-lijnen-vector.jpg"
         alt="" 
            /> */}
-          <p className="bg-gradient-to-bl from-red-100 via-red-500 to-red-900 bg-clip-text text-transparent text-4xl font-bold text-center mt-10">
+          <p
+            className="bg-gradient-to-bl from-red-100 via-red-500 to-red-900
+          dark:bg-gradient-to-bl from-gray-100 via-gray-500 to-gray-900
+           bg-clip-text text-transparent text-4xl font-bold text-center mt-10"
+          >
             LOGO
           </p>
         </div>
@@ -61,81 +97,77 @@ const Login = () => {
           <div className="mb-5 flex flex-col gap-y-8 w-full justify-center p-10 pt-4">
             <FloatLabel className="flex">
               <InputText
-                className="h-14 border-red-500 rounded-5 border w-full rounded-lg shadow-lg shadow-gray"
+                className="h-14 border-red-500 dark:border-black rounded-5 border w-full rounded-lg shadow-lg shadow-gray"
                 id="username"
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
               />
-              <label
-                className="ml-5 font-semibold"
-                htmlFor="username">
+              <label className="ml-5 font-semibold" htmlFor="username">
                 Kullanıcı Adı
               </label>
             </FloatLabel>
             <FloatLabel className="flex">
               <InputText
-                className="h-14 border-red-500 rounded-5 border w-full rounded-lg shadow-lg shadow-gray"
+                className="h-14 border-red-500 dark:border-black rounded-5 border w-full rounded-lg shadow-lg shadow-gray"
                 id="password"
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
                 type="password"
               />
-              <label
-                className="ml-5 font-semibold"
-                htmlFor="password">
+              <label className="ml-5 font-semibold" htmlFor="password">
                 Şifre
               </label>
             </FloatLabel>
             <Button
-              className=" bg-red-500 py-5 text-white font-medium w-[full] h-15 hover:bg-red-600 rounded-lg shadow-lg shadow-gray"
+              className=" bg-red-500 hover:bg-red-600 dark:bg-gray-500 dark:hover:bg-gray-600 py-5 text-white font-medium w-[full] h-15  rounded-lg shadow-lg shadow-gray"
               label="Giriş Yap"
-              onClick={()=>handleLogin}
+              onClick={() => handleLogin}
             />
             <a
-            // onClick={}
+              // onClick={}
               className=" text-center text-secondary font-semibold
-            hover:underline hover:text-primary-dark text-base ">
+            hover:underline hover:text-primary-dark text-base "
+            >
               Şifrenizi mi unuttunuz ?
             </a>
             <div className="flex justify-between">
               <Button
                 icon="pi pi-user-plus"
-                className="bg-gray-500 py-5 text-white font-medium w-[25%] h-10 hover:bg-gray-600 rounded-lg shadow-lg shadow-gray"
+                className="bg-red-600  hover:bg-red-700 dark:bg-gray-600 dark:hover:bg-gray-700 py-5 text-white font-medium w-[25%] h-10 rounded-lg shadow-lg shadow-gray"
                 //onClick={handleLogin}
               />
-              {darkMode === false ? (
+              {localStorage.theme === "dark" ? (
                 <Button
                   icon="pi pi-sun"
-                  className="bg-gray-500 py-5 text-white font-medium w-[25%] h-10 hover:bg-gray-600 rounded-lg shadow-lg shadow-gray"
-                   onClick={() => setDarkMode(!darkMode)}
+                  className="bg-red-600  hover:bg-red-700 dark:bg-gray-600 dark:hover:bg-gray-700 py-5 text-white font-medium w-[25%] h-10 rounded-lg shadow-lg shadow-gray"
+                  onClick={() => toggleTheme()}
                 />
               ) : (
                 <Button
                   icon="pi pi-moon"
-                  className="bg-gray-500 py-5 text-white font-medium w-[25%] h-10 hover:bg-gray-600 rounded-lg shadow-lg shadow-gray"
-                   onClick={() => setDarkMode(!darkMode)}
+                  className="bg-red-600  hover:bg-red-700 dark:bg-gray-600 dark:hover:bg-gray-700 py-5 text-white font-medium w-[25%] h-10 rounded-lg shadow-lg shadow-gray"
+                  onClick={() => toggleTheme()}
                 />
               )}
               {translate === "TR" ? (
                 <Button
                   label="EN"
-                  className="bg-gray-500 py-5 text-white font-medium w-[25%] h-10 hover:bg-gray-600 rounded-lg shadow-lg shadow-gray"
-                   onClick={() => setTranslate('EN')}
+                  className="bg-red-600  hover:bg-red-700 dark:bg-gray-600 dark:hover:bg-gray-700 py-5 text-white font-medium w-[25%] h-10 rounded-lg shadow-lg shadow-gray"
+                  onClick={() => setTranslate("EN")}
                 />
               ) : (
                 <Button
-                label="TR"
-                className="bg-gray-500 py-5 text-white font-medium w-[25%] h-10 hover:bg-gray-600 rounded-lg shadow-lg shadow-gray"
-                   onClick={() => setTranslate('TR')}
+                  label="TR"
+                  className="bg-red-600  hover:bg-red-700 dark:bg-gray-600 dark:hover:bg-gray-700 py-5 text-white font-medium w-[25%] h-10 rounded-lg shadow-lg shadow-gray"
+                  onClick={() => setTranslate("TR")}
                 />
               )}
-              
             </div>
           </div>
         </div>
       </div>
       <div className="left-0 bottom-0 fixed w-[100%] h-[60px] z-10 flex bg-gradient-to-rt from-red-100 via-red-500 to-red-900 text-white flex justify-between items-center shadow-lg">
-        <div className="ml-10 font-bold">2024</div>{' '}
+        <div className="ml-10 font-bold">2024</div>{" "}
         <div className="mr-10 font-bold">Seyfullah Çalışkan </div>
       </div>
     </div>
