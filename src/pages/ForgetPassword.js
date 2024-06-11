@@ -5,17 +5,12 @@ import { FloatLabel } from "primereact/floatlabel";
 
 const ForgetPassword = () => {
   const [value, setValue] = useState();
+
+  useEffect(() => {}, []);
+
   const handleLogin = () => {
     // Giriş işlemleri burada yapılabilir
   };
-
-  useEffect(() => {
-    console.log(localStorage);
-    const currentTheme = localStorage.getItem("theme");
-    if (currentTheme) {
-      document.documentElement.classList.add(currentTheme);
-    }
-  }, []);
 
   return (
     <div

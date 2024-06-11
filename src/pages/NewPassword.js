@@ -8,13 +8,7 @@ const NewPassword = () => {
   const handleLogin = () => {
     // Giriş işlemleri burada yapılabilir
   };
-  useEffect(() => {
-    console.log(localStorage);
-    const currentTheme = localStorage.getItem("theme");
-    if (currentTheme) {
-      document.documentElement.classList.add(currentTheme);
-    }
-  }, []);
+  useEffect(() => {}, []);
   return (
     <div
       className="bg-gradient-to-bl from-red-100 via-red-500 to-red-900 

@@ -7,13 +7,7 @@ const Login = () => {
   const [value, setValue] = useState();
   const [translate, setTranslate] = useState("TR");
 
-  useEffect(() => {
-    console.log(localStorage);
-    const currentTheme = localStorage.getItem("theme");
-    if (currentTheme) {
-      document.documentElement.classList.add(currentTheme);
-    }
-  }, []);
+  useEffect(() => {}, []);
 
   function toggleTheme() {
     const isDarkModeEnabled =
@@ -81,7 +75,7 @@ const Login = () => {
            /> */}
           <p
             className="bg-gradient-to-bl from-red-100 via-red-500 to-red-900
-          dark:bg-gradient-to-bl from-gray-100 via-gray-500 to-gray-900
+          dark:bg-gradient-to-bl dark:from-gray-100 dark:via-gray-500 dark:to-gray-900
            bg-clip-text text-transparent text-4xl font-bold text-center mt-10"
           >
             LOGO

@@ -1,17 +1,8 @@
 import { Button } from "primereact/button";
 import { useEffect } from "react";
 
-export default function HomePage(page) {
-  useEffect(() => {
-    console.log(localStorage);
-    const currentTheme = localStorage.getItem("theme");
-    if (currentTheme) {
-      document.documentElement.classList.add(currentTheme);
-    }
-  }, []);
-
-  console.log("first");
-  console.log(localStorage);
+export default function HomePage() {
+  useEffect(() => {}, []);
   if (
     localStorage.theme === "dark" ||
     (!("theme" in localStorage) &&
@@ -27,7 +18,6 @@ export default function HomePage(page) {
     const newTheme = isDarkModeEnabled ? "light" : "dark";
     localStorage.setItem("theme", newTheme);
     document.documentElement.classList.toggle("dark", !isDarkModeEnabled);
-    console.log(localStorage);
   }
   return (
     <div>
