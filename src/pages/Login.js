@@ -3,12 +3,14 @@ import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { FloatLabel } from "primereact/floatlabel";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+
 import i18n from "../i18n";
 
 const Login = () => {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const currentLanguage = i18n.language;
-  console.log(currentLanguage);
 
   const [value, setValue] = useState();
 
@@ -113,55 +115,42 @@ const Login = () => {
               label={t("login")}
               onClick={() => handleLogin}
             />
-            <a
-              // onClick={}
+            <p
+              onClick={() => navigate(`/new-password`)}
               className=" text-center text-secondary font-semibold
             hover:underline hover:text-primary-dark text-base "
             >
               {t("forgetPassword")}
-            </a>
+            </p>
             <div className="flex justify-between">
               <Button
                 icon="pi pi-user-plus"
                 className="bg-red-600  hover:bg-red-700 dark:bg-gray-600 dark:hover:bg-gray-700 py-5 text-white font-medium w-[25%] h-10 rounded-lg shadow-lg shadow-gray"
-                onClick={handleLogin}
+                onClick={() => navigate(`/register`)}
               />
-              {localStorage.theme === "dark" ? (
-                <Button
-                  icon="pi pi-sun"
-                  className="bg-red-600  hover:bg-red-700 dark:bg-gray-600 dark:hover:bg-gray-700 py-5 text-white font-medium w-[25%] h-10 rounded-lg shadow-lg shadow-gray"
-                  onClick={() => toggleTheme()}
-                />
-              ) : (
-                <Button
-                  icon="pi pi-moon"
-                  className="bg-red-600  hover:bg-red-700 dark:bg-gray-600 dark:hover:bg-gray-700 py-5 text-white font-medium w-[25%] h-10 rounded-lg shadow-lg shadow-gray"
-                  onClick={() => toggleTheme()}
-                />
-              )}
-              {currentLanguage === "tr" ? (
-                <Button
-                  label="EN"
-                  className="bg-red-600  hover:bg-red-700 dark:bg-gray-600 dark:hover:bg-gray-700 py-5 text-white font-medium w-[25%] h-10 rounded-lg shadow-lg shadow-gray"
-                  onClick={() => changeLanguage("en")}
-                />
-              ) : (
-                <Button
-                  label="TR"
-                  className="bg-red-600  hover:bg-red-700 dark:bg-gray-600 dark:hover:bg-gray-700 py-5 text-white font-medium w-[25%] h-10 rounded-lg shadow-lg shadow-gray"
-                  onClick={() => changeLanguage("tr")}
-                />
-              )}
+              <Button
+                icon={
+                  localStorage.theme === "dark" ? "pi pi-sun" : "pi pi-moon"
+                }
+                className="bg-red-600  hover:bg-red-700 dark:bg-gray-600 dark:hover:bg-gray-700 py-5 text-white font-medium w-[25%] h-10 rounded-lg shadow-lg shadow-gray"
+                onClick={() => toggleTheme()}
+              />
+              <Button
+                label={currentLanguage === "tr" ? "EN" : "TR"}
+                className="bg-red-600  hover:bg-red-700 dark:bg-gray-600 dark:hover:bg-gray-700 py-5 text-white font-medium w-[25%] h-10 rounded-lg shadow-lg shadow-gray"
+                onClick={() =>
+                  currentLanguage === "tr"
+                    ? changeLanguage("en")
+                    : changeLanguage("tr")
+                }
+              />
             </div>
           </div>
         </div>
       </div>
       <div className="left-0 bottom-0 fixed w-[100%] h-[60px] z-10 bg-gradient-to-rt from-red-100 via-red-500 to-red-900 text-white flex justify-between items-center shadow-lg">
         <div className="ml-10 font-bold">2024</div>
-        <div className="mr-10 font-bold">
-          Seyfullah Çalışkan
-          <p>{t("seyfo")}</p>
-        </div>
+        <div className="mr-10 font-bold">Seyfullah Çalışkan</div>
       </div>
     </div>
   );

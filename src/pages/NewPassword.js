@@ -3,13 +3,17 @@ import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { FloatLabel } from "primereact/floatlabel";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const NewPassword = () => {
   const [value, setValue] = useState();
+
+  const navigate = useNavigate();
   const { t } = useTranslation();
 
   const handleChangePassword = () => {
     // Giriş işlemleri burada yapılabilir
+    navigate(`/login`);
   };
   useEffect(() => {}, []);
   return (
@@ -91,7 +95,7 @@ const NewPassword = () => {
             <Button
               className=" bg-red-500 hover:bg-red-600 dark:bg-gray-500 dark:hover:bg-gray-600 py-5 text-white font-medium w-[full] h-15  rounded-lg shadow-lg shadow-gray"
               label={t("renewPassword")}
-              onClick={handleChangePassword}
+              onClick={() => handleChangePassword()}
             />
           </div>
         </div>

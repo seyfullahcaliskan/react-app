@@ -3,15 +3,19 @@ import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { FloatLabel } from "primereact/floatlabel";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const ForgetPassword = () => {
   const [value, setValue] = useState();
+
+  const navigate = useNavigate();
   const { t } = useTranslation();
 
   useEffect(() => {}, []);
 
   const sendPasswordMail = () => {
     // Giriş işlemleri burada yapılabilir
+    navigate(`/new-password`);
   };
 
   return (
